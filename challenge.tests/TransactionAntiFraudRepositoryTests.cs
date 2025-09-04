@@ -4,6 +4,7 @@ using Moq;
 using transaction_domain.Core.TransactionModule.Entities;
 using transaction_domain.Core.TransactionModule.Enums;
 using antifraud_infrastructure.Persistence;
+using Xunit;
 
 namespace challenge.tests;
 

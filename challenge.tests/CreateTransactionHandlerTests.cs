@@ -3,6 +3,7 @@ using transaction_domain.Core.Sqs;
 using transaction_domain.Core.TransactionModule.Entities;
 using transaction_domain.Core.TransactionModule.Interfaces;
 using transaction_application.Commands.CreateTransaction;
+using Xunit;
 
 namespace challenge.tests;
 

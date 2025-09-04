@@ -5,6 +5,7 @@ using transaction_domain.Core.TransactionModule.Entities;
 using transaction_domain.Core.TransactionModule.Enums;
 using transaction_domain.Core.TransactionModule.Interfaces;
 using antifraud_application.Commands.ApplyAntifraudDecision;
+using Xunit;
 
 namespace challenge.tests;
 

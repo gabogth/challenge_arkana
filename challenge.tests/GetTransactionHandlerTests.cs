@@ -2,6 +2,7 @@ using Moq;
 using transaction_domain.Core.TransactionModule.Entities;
 using transaction_domain.Core.TransactionModule.Interfaces;
 using transaction_application.Queries.GetTransaction;
+using Xunit;
 
 namespace challenge.tests;
 
