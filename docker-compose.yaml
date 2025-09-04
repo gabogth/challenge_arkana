@@ -34,3 +34,36 @@ services:
       - KAFKA_CLUSTERS_0_NAME=local-kafka
       - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=kafka:29092
       - KAFKA_CLUSTERS_0_ZOOKEEPER=zookeeper:2181
+
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=4N&XY&d_0y6+
+    ports:
+      - "1433:1433"
+
+  transaction-ms:
+    build:
+      context: .
+      dockerfile: transaction-ms/Dockerfile
+    depends_on:
+      - mssql
+      - kafka
+    environment:
+      ConnectionStrings__DefaultConnectionString: Server=mssql,1433;Database=transactionDb;User Id=sa;Password=4N&XY&d_0y6+;Encrypt=False;TrustServerCertificate=true
+      kafka__bootstrapServers: kafka:29092
+    ports:
+      - "8081:8080"
+
+  antifraud-worker:
+    build:
+      context: .
+      dockerfile: antifraud-worker/Dockerfile
+    depends_on:
+      - mssql
+      - kafka
+    environment:
+      ConnectionStrings__DefaultConnectionString: Server=mssql,1433;Database=transactionDb;User Id=sa;Password=4N&XY&d_0y6+;Encrypt=False;TrustServerCertificate=true
+      kafka__bootstrapServers: kafka:29092
+
