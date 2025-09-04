@@ -2,7 +2,7 @@
 {
     public interface IKafkaConsumer
     {
-        void Configure();
+        Task Configure();
         string ReadMessage(CancellationToken cancellationToken);
     }
 }

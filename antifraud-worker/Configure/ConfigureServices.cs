@@ -19,7 +19,7 @@ namespace antifraud_worker.Configure
         {
             services.AddDbContext<ApplicationDbContext>(opt =>
             {
-                opt.UseSqlServer(configuration.GetConnectionString("DefaultConnectionString"));
+                opt.UseNpgsql(configuration.GetConnectionString("DefaultConnectionString"));
             });
         }
 

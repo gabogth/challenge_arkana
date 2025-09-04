@@ -3,7 +3,7 @@ services:
   postgres:
     image: postgres:14
     ports:
-      - "5432:5432"
+      - "5431:5432"
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
@@ -13,7 +13,8 @@ services:
       ZOOKEEPER_CLIENT_PORT: 2181
   kafka:
     image: confluentinc/cp-enterprise-kafka:5.5.3
-    depends_on: [zookeeper]
+    depends_on:
+      - zookeeper
     environment:
       KAFKA_ZOOKEEPER_CONNECT: "zookeeper:2181"
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://localhost:9092
@@ -21,6 +22,7 @@ services:
       KAFKA_BROKER_ID: 1
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_JMX_PORT: 9991
+      TOPIC_AUTO_CREATE: "true"
     ports:
       - 9092:9092
   kafkaui:
@@ -35,23 +37,15 @@ services:
       - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=kafka:29092
       - KAFKA_CLUSTERS_0_ZOOKEEPER=zookeeper:2181
 
-  mssql:
-    image: mcr.microsoft.com/mssql/server:2022-latest
-    environment:
-      - ACCEPT_EULA=Y
-      - SA_PASSWORD=4N&XY&d_0y6+
-    ports:
-      - "1433:1433"
-
   transaction-ms:
     build:
       context: .
       dockerfile: transaction-ms/Dockerfile
     depends_on:
-      - mssql
+      - postgres
       - kafka
     environment:
-      ConnectionStrings__DefaultConnectionString: Server=mssql,1433;Database=transactionDb;User Id=sa;Password=4N&XY&d_0y6+;Encrypt=False;TrustServerCertificate=true
+      ConnectionStrings__DefaultConnectionString: Host=postgres;Port=5432;Database=transactionaldb;Username=postgres;Password=postgres;Application Name=challenge;
       kafka__bootstrapServers: kafka:29092
     ports:
       - "8081:8080"
@@ -61,9 +55,8 @@ services:
       context: .
       dockerfile: antifraud-worker/Dockerfile
     depends_on:
-      - mssql
+      - postgres
       - kafka
     environment:
-      ConnectionStrings__DefaultConnectionString: Server=mssql,1433;Database=transactionDb;User Id=sa;Password=4N&XY&d_0y6+;Encrypt=False;TrustServerCertificate=true
+      ConnectionStrings__DefaultConnectionString: Host=postgres;Port=5432;Database=transactionaldb;Username=postgres;Password=postgres;Application Name=challenge;
       kafka__bootstrapServers: kafka:29092
-

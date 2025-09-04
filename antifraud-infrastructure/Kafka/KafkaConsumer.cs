@@ -9,13 +9,16 @@ namespace antifraud_infrastructure.Kafka
         private KafkaConsumerOptions options;
         private readonly ILogger<KafkaConsumer> logger;
         private IConsumer<string, string>? consumer;
-        public KafkaConsumer(KafkaConsumerOptions options, ILogger<KafkaConsumer> logger)
+        private IKafkaAdmin admin;
+        public KafkaConsumer(KafkaConsumerOptions options, ILogger<KafkaConsumer> logger, IKafkaAdmin admin)
         {
             this.options = options;
             this.logger = logger;
+            this.admin = admin;
         }
-        public void Configure()
+        public async Task Configure()
         {
+            await admin.CreateTopic(options.Topic);
             ConsumerConfig config = new ConsumerConfig
             {
                 BootstrapServers = options.BootstrapServers,
@@ -23,6 +26,7 @@ namespace antifraud_infrastructure.Kafka
                 AutoOffsetReset = AutoOffsetReset.Earliest,
                 Acks = Acks.All,
                 EnableSslCertificateVerification = options.EnableSsl,
+                AllowAutoCreateTopics = true
             };
             ConsumerBuilder<string, string> builder = new ConsumerBuilder<string, string>(config);
             builder.SetErrorHandler((_, e) => logger.LogError($"Kafka error: {e.Reason}"));

@@ -24,7 +24,7 @@ namespace antifraud_application.Commands.ApplyAntifraudDecision
         }
         public async Task<ApplyAntifraudDecisionDto> Handle(ApplyAntifraudDecisionCommand request, CancellationToken cancellationToken)
         {
-            consumer.Configure();
+            await consumer.Configure();
             while (!cancellationToken.IsCancellationRequested) 
             {
                 string transactionExternalId = consumer.ReadMessage(cancellationToken);
