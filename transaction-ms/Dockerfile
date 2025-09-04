@@ -26,4 +26,8 @@ RUN dotnet publish "./transaction-ms.csproj" -c $BUILD_CONFIGURATION -o /app/pub
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "transaction-ms.dll"]
+# Install dotnet-ef tool to run migrations at startup
+RUN dotnet tool install --global dotnet-ef
+ENV PATH="$PATH:/root/.dotnet/tools"
+# Apply migrations and start the service
+ENTRYPOINT ["bash", "-c", "dotnet ef database update && dotnet transaction-ms.dll"]
