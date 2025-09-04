@@ -12,8 +12,9 @@ WORKDIR /src
 COPY ["antifraud-worker/antifraud-worker.csproj", "antifraud-worker/"]
 RUN dotnet restore "./antifraud-worker/antifraud-worker.csproj"
 COPY . .
+# Run tests before proceeding with the rest of the build
+RUN dotnet test "challenge.tests/challenge.tests.csproj" -c $BUILD_CONFIGURATION
 WORKDIR "/src/antifraud-worker"
-RUN dotnet build "./antifraud-worker.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 # Esta fase se usa para publicar el proyecto de servicio que se copiará en la fase final.
 FROM build AS publish
