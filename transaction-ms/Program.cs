@@ -1,5 +1,7 @@
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
+using transaction_infrastructure.Persistence;
 using transaction_ms.Configure;
 using transaction_ms.Middlewares;
 
@@ -25,17 +27,20 @@ builder.Services.AddSwaggerGen(c => {
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
+app.UseSwagger(c => {
+    c.OpenApiVersion = Microsoft.OpenApi.OpenApiSpecVersion.OpenApi2_0;
+});
+app.UseSwaggerUI(c =>
 {
-    app.UseSwagger(c => {
-        c.OpenApiVersion = Microsoft.OpenApi.OpenApiSpecVersion.OpenApi2_0;
-    });
-    app.UseSwaggerUI(c =>
-    {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Transaction API v1");
-        c.RoutePrefix = "swagger";
-    });
-}
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Transaction API v1");
+    c.RoutePrefix = "swagger";
+});
+
+var application = app.Services.CreateScope().ServiceProvider.GetRequiredService<ApplicationDbContext>();
+
+var pendingMigrations = await application.Database.GetPendingMigrationsAsync();
+if (pendingMigrations != null)
+    await application.Database.MigrateAsync();
 
 app.UseHttpsRedirection();
 
