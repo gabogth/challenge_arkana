@@ -1,0 +1,94 @@
+## Build results
+bin/
+obj/
+out/
+Debug/
+Release/
+x64/
+x86/
+[Aa]rtifacts/
+
+## User-specific files
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+*.userprefs
+
+## IDE settings
+.vs/
+.vscode/
+.idea/
+
+## Logs
+*.log
+logs/
+*.tlog
+
+## OS generated
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+## Packages
+*.nupkg
+*.snupkg
+*.nuspec
+packages/
+*.tgz
+
+## NuGet restore results
+project.lock.json
+project.fragment.lock.json
+
+## Resharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+## Rider
+.idea/
+
+## Test results
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+*.coverage
+*.coveragexml
+*.testresults
+TestResult.xml
+
+## Entity Framework
+Migrations/**/Snapshot.cs
+
+## Dotnet tools
+*.dotnet-tools.json
+
+## Publish
+*.PublishSettings
+publish/
+wwwroot/lib/
+
+## Azure
+*.azurePubxml
+*.publishproj
+
+## Docker
+docker-compose.override.yml
+.docker/
+.dockerignore
+
+## Secrets / configs
+appsettings.*.json
+!appsettings.Development.json
+secrets.json
+
+## Swagger
+swagger/v1/swagger.json
+
+## Others
+*.swp
+*.tmp
+*.bak
+*.orig
+*.tmp.*

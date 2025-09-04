@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36414.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "antifraud-worker", "antifraud-worker\antifraud-worker.csproj", "{567E3960-BF3D-475C-AC7B-FFB26AC614E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "transaction-domain", "transaction-domain\transaction-domain.csproj", "{690F818E-0BAA-48B5-B554-62F29D514572}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "transaction-ms", "transaction-ms\transaction-ms.csproj", "{792208B9-8F84-4AF6-B3B1-6106958D798C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "transaction-application", "transaction-application\transaction-application.csproj", "{F26F9699-BD9B-4A6C-B8B5-37DA0998D246}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "transaction-infrastructure", "transaction-infrastructure\transaction-infrastructure.csproj", "{F334C434-9D9E-4DFA-9AC7-6AD5DF7E89B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "antifraud-application", "antifraud-application\antifraud-application.csproj", "{B2A40635-3169-4CDC-A0C8-D89F04DC3959}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "antifraud-infrastructure", "antifraud-infrastructure\antifraud-infrastructure.csproj", "{1D3963C9-9286-46A8-84A6-B4C75494BBC6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{567E3960-BF3D-475C-AC7B-FFB26AC614E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{567E3960-BF3D-475C-AC7B-FFB26AC614E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{567E3960-BF3D-475C-AC7B-FFB26AC614E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{567E3960-BF3D-475C-AC7B-FFB26AC614E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{690F818E-0BAA-48B5-B554-62F29D514572}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{690F818E-0BAA-48B5-B554-62F29D514572}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{690F818E-0BAA-48B5-B554-62F29D514572}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{690F818E-0BAA-48B5-B554-62F29D514572}.Release|Any CPU.Build.0 = Release|Any CPU
+		{792208B9-8F84-4AF6-B3B1-6106958D798C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{792208B9-8F84-4AF6-B3B1-6106958D798C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{792208B9-8F84-4AF6-B3B1-6106958D798C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{792208B9-8F84-4AF6-B3B1-6106958D798C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F26F9699-BD9B-4A6C-B8B5-37DA0998D246}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F26F9699-BD9B-4A6C-B8B5-37DA0998D246}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F26F9699-BD9B-4A6C-B8B5-37DA0998D246}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F26F9699-BD9B-4A6C-B8B5-37DA0998D246}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F334C434-9D9E-4DFA-9AC7-6AD5DF7E89B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F334C434-9D9E-4DFA-9AC7-6AD5DF7E89B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F334C434-9D9E-4DFA-9AC7-6AD5DF7E89B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F334C434-9D9E-4DFA-9AC7-6AD5DF7E89B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2A40635-3169-4CDC-A0C8-D89F04DC3959}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2A40635-3169-4CDC-A0C8-D89F04DC3959}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2A40635-3169-4CDC-A0C8-D89F04DC3959}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2A40635-3169-4CDC-A0C8-D89F04DC3959}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D3963C9-9286-46A8-84A6-B4C75494BBC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D3963C9-9286-46A8-84A6-B4C75494BBC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D3963C9-9286-46A8-84A6-B4C75494BBC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D3963C9-9286-46A8-84A6-B4C75494BBC6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1987639F-B5A9-46BE-9722-965DE210DCA0}
+	EndGlobalSection
+EndGlobal
