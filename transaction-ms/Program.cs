@@ -37,7 +37,7 @@ app.UseSwaggerUI(c =>
 });
 
 var application = app.Services.CreateScope().ServiceProvider.GetRequiredService<ApplicationDbContext>();
-
+await Task.Delay(1000 * 3);
 var pendingMigrations = await application.Database.GetPendingMigrationsAsync();
 if (pendingMigrations != null)
     await application.Database.MigrateAsync();

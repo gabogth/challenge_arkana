@@ -15,13 +15,13 @@ namespace transaction_ms.Migrations
                 name: "transactions",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    source_account_id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    target_account_id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    transfer_type_id = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    source_account_id = table.Column<Guid>(type: "uuid", nullable: false),
+                    target_account_id = table.Column<Guid>(type: "uuid", nullable: false),
+                    transfer_type_id = table.Column<int>(type: "integer", nullable: false),
                     value = table.Column<decimal>(type: "numeric(18,2)", nullable: false),
-                    status = table.Column<int>(type: "int", nullable: false),
-                    created_at = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    status = table.Column<int>(type: "integer", nullable: false),
+                    created_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {

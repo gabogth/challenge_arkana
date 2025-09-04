@@ -2,8 +2,8 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using transaction_infrastructure.Persistence;
 
 #nullable disable
@@ -18,34 +18,34 @@ namespace transaction_ms.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "9.0.8")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+                .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+            NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
             modelBuilder.Entity("transaction_domain.Core.TransactionModule.Entities.Transaction", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2")
+                        .HasColumnType("timestamp with time zone")
                         .HasColumnName("created_at");
 
                     b.Property<Guid>("SourceAccountId")
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("source_account_id");
 
                     b.Property<int>("Status")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("status");
 
                     b.Property<Guid>("TargetAccountId")
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("target_account_id");
 
                     b.Property<int>("TransferTypeId")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("transfer_type_id");
 
                     b.Property<decimal>("Value")

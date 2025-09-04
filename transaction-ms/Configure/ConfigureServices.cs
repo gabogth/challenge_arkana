@@ -32,7 +32,7 @@ namespace transaction_ms.Configure
             services.AddDbContext<ApplicationDbContext>(opt =>
             {
                 string con = configuration.GetConnectionString("DefaultConnectionString")! ?? "empty";
-                opt.UseSqlServer(configuration.GetConnectionString("DefaultConnectionString"), b => b.MigrationsAssembly("transaction-ms"));
+                opt.UseNpgsql(configuration.GetConnectionString("DefaultConnectionString"), b => b.MigrationsAssembly("transaction-ms"));
             });
         }
 
